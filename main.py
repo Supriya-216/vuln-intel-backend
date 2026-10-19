@@ -18,8 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# UNCOMMENT when Dev 2 hands you rag.py (his AI brain):
-# from rag import ask
+from rag import ask
 
 class Asset(BaseModel):
     name: str
@@ -42,9 +41,7 @@ def home():
 
 @app.post("/ask")
 def ask_route(payload: AskPayload):
-    # PLACEHOLDER - replace with real call after integration:
-    # return ask(payload.question, payload.asset_criticality)
-    return {"message": "waiting for rag.py from Dev 2"}
+    return ask(payload.question, payload.asset_criticality)
 
 @app.get("/assets")
 def list_assets():
